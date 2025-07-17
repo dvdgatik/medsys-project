@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 const CreateAppointmentScreen: React.FC = () => {
     const [date, setDate] = useState('');
     const [doctor, setDoctor] = useState('');
-    const [notes, setNotes] = useState('');
+    const [notes, setNotes] = useState(''); 
 
     const dispatch = useDispatch();
     const navigation = useNavigation();
