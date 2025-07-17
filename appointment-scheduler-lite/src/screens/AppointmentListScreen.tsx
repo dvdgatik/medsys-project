@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, FlatList, Button, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, FlatList, Button, Pressable, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../navigation/AppNavigator";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import AppointmentCard from "../components/AppointmentCard";
+import EmptyListMessage from "../components/EmptyListMessage";
 import { MaterialIcons } from '@expo/vector-icons';
 
 
@@ -20,19 +21,19 @@ const AppointmentListScreen: React.FC = () => {
     return (
         <View style={styles.container}>
             <View style={styles.toggleContainer}>
-                <TouchableOpacity
+                <Pressable
                     style={[styles.toggleButton, viewMode === 'list' && styles.activeButton]}
                     onPress={() => setViewMode('list')}
                     >
                     <MaterialIcons name="view-list" size={24} color={viewMode === 'list' ? '#fff' : '#333'} />
-                    </TouchableOpacity>
+                </Pressable>
 
-                <TouchableOpacity
+                <Pressable
                     style={[styles.toggleButton, viewMode === 'grid' && styles.activeButton]}
                     onPress={() => setViewMode('grid')}
                 >
                 <MaterialIcons name="grid-view" size={24} color={viewMode === 'grid' ? '#fff' : '#333'} />
-                </TouchableOpacity>
+                </Pressable>
             </View>
                 <FlatList
                     key={viewMode} // force new render at the moment to change numColumns
@@ -52,7 +53,7 @@ const AppointmentListScreen: React.FC = () => {
                     numColumns={viewMode === 'grid' ? 3 : 1}
                     columnWrapperStyle={viewMode === 'grid' ? styles.row : undefined}
                     contentContainerStyle={appointments.length === 0 ? styles.emptyContainer : undefined}
-                    ListEmptyComponent={<Text style={styles.emptyText}>There aren't available appointments.</Text>}
+                    ListEmptyComponent={<EmptyListMessage message="No appointments Available"/>}
                 />
 
                 <Button

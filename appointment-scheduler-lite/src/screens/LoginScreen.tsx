@@ -3,9 +3,6 @@ import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import { login } from '../store/authSlice'
 
-
-
-
 export default function LoginScreen() {
     const dispatch = useDispatch();
 
