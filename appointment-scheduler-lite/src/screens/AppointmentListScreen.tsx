@@ -6,8 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../navigation/AppNavigator";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'AppointmentList'>
+
 const AppointmentListScreen: React.FC = () => {
     const appointments = useSelector((state: RootState) => state.appointments.appointments);
     const navigation = useNavigation<NavigationProp>();
@@ -29,9 +29,7 @@ const AppointmentListScreen: React.FC = () => {
     )
 }
 
-
 export default AppointmentListScreen;
-
 
 const styles = StyleSheet.create({
     container: { flex: 1, padding: 16},
