@@ -14,7 +14,7 @@ This project is a lightweight Appointment Scheduler designed to demonstrate:
 - Cross-platform support: **iOS, Android, and Web** (using Expo and `react-native-web`).
 - Modular folder structure with separation between screens, components, and store.
 - Basic authentication simulation (login screen).
-- Create, list, and manage appointments with date selection via native date pickers.
+- Create, list, search, and manage appointments with date selection via native date pickers.
 - Clean, readable, and type-safe code emphasizing maintainability and extensibility.
 
 ---
