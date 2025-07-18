@@ -5,12 +5,12 @@ import { LoginScreen } from "../screens/LoginScreen";
 import { AppointmentListScreen } from "../screens/AppointmentListScreen";
 import { CreateAppointmentScreen } from "../screens/CreateAppointmentScreen";
 import { useSelector, UseSelector } from "react-redux";
-import { RootState } from "@reduxjs/toolkit/query";
+import { RootState } from "../store";
 import { RootStackParamList } from "../types/navigation";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 export const AppNavigator: React.FC = () => {
-  const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   return (
     <NavigationContainer>
