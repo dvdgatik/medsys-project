@@ -5,7 +5,7 @@ type EmptyListMessageProps = {
   message?: string;
 };
 
-const EmptyListMessage: React.FC<EmptyListMessageProps> = ({
+export const EmptyListMessage: React.FC<EmptyListMessageProps> = ({
   message = "No items available",
 }) => {
   return (
@@ -27,5 +27,3 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
-
-export default EmptyListMessage;

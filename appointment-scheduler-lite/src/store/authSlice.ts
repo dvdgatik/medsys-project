@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-interface User {
-    id: string;
-    name: string;
-    email: string;
-}
-
+import { User } from '../types/user';
 interface AuthState {
     user: User | null;
     isLoggedIn: boolean;

@@ -8,7 +8,7 @@ export type AppointmentCardProps = {
   viewMode: "list" | "grid";
 };
 
-const AppointmentCard: React.FC<AppointmentCardProps> = ({
+export const AppointmentCard: React.FC<AppointmentCardProps> = ({
   date,
   doctor,
   notes,
@@ -28,8 +28,6 @@ const AppointmentCard: React.FC<AppointmentCardProps> = ({
   );
 };
 
-export default AppointmentCard;
-
 const styles = StyleSheet.create({
   card: {
     borderWidth: 1,
@@ -44,7 +42,7 @@ const styles = StyleSheet.create({
   gridCard: {
     flex: 1,
     margin: 6,
-    minWidth: "30%", // TOOD: this is a magic number, calculate
+    minWidth: "30%", // TODO: this is a magic number, calculate
     maxWidth: "33%",
   },
   title: {

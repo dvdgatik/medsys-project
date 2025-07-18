@@ -1,7 +1,8 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect, useMemo } from "react";
 import {
   View,
   Text,
+  TextInput,
   FlatList,
   Button,
   Pressable,
@@ -12,10 +13,10 @@ import { RootState } from "../store";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../navigation/AppNavigator";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import AppointmentCard from "../components/AppointmentCard";
-import EmptyListMessage from "../components/EmptyListMessage";
+import { AppointmentCard } from "../components/AppointmentCard";
+import { EmptyListMessage } from "../components/EmptyListMessage";
+import { ViewToggleButton } from "../components/ViewToggleButton";
 import { logout } from "../store/authSlice";
-import { MaterialIcons } from "@expo/vector-icons";
 
 type NavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -26,6 +27,24 @@ export const AppointmentListScreen: React.FC = () => {
   const appointments = useSelector(
     (state: RootState) => state.appointments.appointments
   );
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Memoizamos el filtrado para optimizar rendimiento
+  const filteredAppointments = useMemo(() => {
+    if (!searchTerm.trim()) return appointments;
+
+    const lowerTerm = searchTerm.toLowerCase();
+
+    return appointments.filter(({ date, doctor, notes }) => {
+      return (
+        date.toLowerCase().includes(lowerTerm) ||
+        doctor.toLowerCase().includes(lowerTerm) ||
+        (notes?.toLowerCase().includes(lowerTerm) ?? false)
+      );
+    });
+  }, [searchTerm, appointments]);
+
   const navigation = useNavigation<NavigationProp>();
   const dispatch = useDispatch();
 
@@ -47,38 +66,32 @@ export const AppointmentListScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      <TextInput
+        placeholder="Buscar por fecha, doctor o nota"
+        style={styles.searchInput}
+        value={searchTerm}
+        onChangeText={setSearchTerm}
+      />
       <View style={styles.toggleContainer}>
-        <Pressable
-          style={[
-            styles.toggleButton,
-            viewMode === "list" && styles.activeButton,
-          ]}
-          onPress={() => setViewMode("list")}
-        >
-          <MaterialIcons
-            name="view-list"
-            size={24}
-            color={viewMode === "list" ? "#fff" : "#333"}
-          />
-        </Pressable>
-
-        <Pressable
-          style={[
-            styles.toggleButton,
-            viewMode === "grid" && styles.activeButton,
-          ]}
-          onPress={() => setViewMode("grid")}
-        >
-          <MaterialIcons
-            name="grid-view"
-            size={24}
-            color={viewMode === "grid" ? "#fff" : "#333"}
-          />
-        </Pressable>
+        <ViewToggleButton
+          mode="list"
+          currentMode={viewMode}
+          onPress={setViewMode}
+          style={styles.toggleButton}
+          activeStyle={styles.activeButton}
+        />
+        <ViewToggleButton
+          mode="grid"
+          currentMode={viewMode}
+          onPress={setViewMode}
+          style={styles.toggleButton}
+          activeStyle={styles.activeButton}
+        />
       </View>
+
       <FlatList
         key={viewMode} // force new render at the moment to change numColumns
-        data={appointments}
+        data={filteredAppointments}
         keyExtractor={(item, index) => {
           if ("id" in item) return item.id.toString();
           return index.toString(); // fallback if there's no id
@@ -100,7 +113,6 @@ export const AppointmentListScreen: React.FC = () => {
           <EmptyListMessage message="No appointments Available" />
         }
       />
-
       <Button
         title="Create New Appoint."
         onPress={() => navigation.navigate("CreateAppointment")}
@@ -146,5 +158,12 @@ const styles = StyleSheet.create({
   },
   logoutText: {
     fontWeight: "bold",
+  },
+  searchInput: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    padding: 10,
+    marginBottom: 12,
+    borderRadius: 5,
   },
 });
