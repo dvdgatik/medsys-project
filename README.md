@@ -150,7 +150,7 @@ This project is a lightweight Appointment Scheduler designed to demonstrate:
 ## 🛠️ Next Steps / Improvements
 
 - Add real backend API for auth and appointments.
-- Add persistent storage (AsyncStorage or SQLite).
+- Add persistent storage (SQLite).
 - Enhance UI/UX with animations and better design.
 - Add unit and integration tests.
 - Integrate monorepo and separate the web and mobile app
