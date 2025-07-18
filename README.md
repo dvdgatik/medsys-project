@@ -32,6 +32,8 @@ This project is a lightweight Appointment Scheduler designed to demonstrate:
 
 ## 📂 Project Structure
 
+<<<<<<< HEAD
+
 ```
 └── 📁medsys-appointment-scheduler-lite
     └── 📁.expo
