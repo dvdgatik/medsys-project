@@ -11,7 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useNavigation } from "@react-navigation/native";
-import { RootStackParamList } from "../navigation/AppNavigator";
+import { RootStackParamList } from "../types/navigation";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AppointmentCard } from "../components/AppointmentCard";
 import { EmptyListMessage } from "../components/EmptyListMessage";
@@ -67,7 +67,7 @@ export const AppointmentListScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <TextInput
-        placeholder="Buscar por fecha, doctor o nota"
+        placeholder="Search by date, doctor or note"
         style={styles.searchInput}
         value={searchTerm}
         onChangeText={setSearchTerm}
@@ -160,8 +160,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   searchInput: {
+    backgroundColor: "#ffffff",
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#cccccc",
     padding: 10,
     marginBottom: 12,
     borderRadius: 5,

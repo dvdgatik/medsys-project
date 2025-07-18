@@ -22,8 +22,8 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
       ]}
     >
       <Text style={styles.title}>{date}</Text>
-      <Text style={styles.doctor}> Doctor: {doctor}</Text>
-      {notes && <Text>Notas: {notes}</Text>}
+      <Text style={styles.doctor}>Doctor: {doctor}</Text>
+      {notes && <Text>Note: {notes}</Text>}
     </View>
   );
 };

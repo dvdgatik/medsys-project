@@ -6,12 +6,7 @@ import { AppointmentListScreen } from "../screens/AppointmentListScreen";
 import { CreateAppointmentScreen } from "../screens/CreateAppointmentScreen";
 import { useSelector, UseSelector } from "react-redux";
 import { RootState } from "@reduxjs/toolkit/query";
-
-export type RootStackParamList = {
-  Login: undefined;
-  AppointmentList: undefined;
-  CreateAppointment: undefined;
-};
+import { RootStackParamList } from "../types/navigation";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 export const AppNavigator: React.FC = () => {
