@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { addAppointment } from "../store/appointmentsSlice";
+import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigation } from "@react-navigation/native";
 import DateTimePickerInput from "../components/DateTimePickerInput";
