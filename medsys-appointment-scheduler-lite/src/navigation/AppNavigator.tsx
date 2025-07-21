@@ -4,7 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LoginScreen } from "../screens/LoginScreen";
 import { AppointmentListScreen } from "../screens/AppointmentListScreen";
 import { CreateAppointmentScreen } from "../screens/CreateAppointmentScreen";
-import { useSelector, UseSelector } from "react-redux";
+import { AppointmentDetailScreen } from "../screens/AppointmentDetailScreen";
+import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { RootStackParamList } from "../types/navigation";
 
@@ -26,6 +27,11 @@ export const AppNavigator: React.FC = () => {
               name="CreateAppointment"
               component={CreateAppointmentScreen}
               options={{ title: "Create Appointment" }}
+            />
+            <Stack.Screen
+              name="AppointmentDetail"
+              component={AppointmentDetailScreen}
+              options={{ title: "Appointment Details" }}
             />
           </>
         ) : (

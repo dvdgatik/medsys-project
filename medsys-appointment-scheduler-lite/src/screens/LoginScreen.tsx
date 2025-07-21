@@ -42,7 +42,6 @@ export const LoginScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome</Text>
-
       <Controller
         control={control}
         name="email"
@@ -63,7 +62,6 @@ export const LoginScreen: React.FC = () => {
           </>
         )}
       />
-
       <Controller
         control={control}
         name="password"
@@ -82,7 +80,6 @@ export const LoginScreen: React.FC = () => {
           </>
         )}
       />
-
       <Button title="Sign In" onPress={handleSubmit(onSubmit)} />
     </View>
   );

@@ -15,6 +15,7 @@ const schema = yup.object().shape({
   date: yup.date().required("Appointment date is required"),
   doctor: yup.string().required("Doctor is required"),
   notes: yup.string().optional(),
+  status: yup.string().optional(),
 });
 
 export const CreateAppointmentScreen: React.FC = () => {
@@ -31,6 +32,7 @@ export const CreateAppointmentScreen: React.FC = () => {
       date: new Date(),
       doctor: "",
       notes: "",
+      status: "",
     },
     resolver: yupResolver(schema),
   });
@@ -42,6 +44,7 @@ export const CreateAppointmentScreen: React.FC = () => {
         date: data.date.toISOString().split("T")[0],
         doctor: data.doctor,
         notes: data.notes,
+        status: "Pending",
       })
     );
     navigation.goBack();
@@ -58,7 +61,6 @@ export const CreateAppointmentScreen: React.FC = () => {
         )}
       />
       {errors.date && <Text style={styles.error}>{errors.date.message}</Text>}
-
       <TextInput
         placeholder="Doctor"
         style={styles.input}
@@ -67,7 +69,6 @@ export const CreateAppointmentScreen: React.FC = () => {
       {errors.doctor && (
         <Text style={styles.error}>{errors.doctor.message}</Text>
       )}
-
       <Controller
         control={control}
         name="notes"
@@ -80,7 +81,6 @@ export const CreateAppointmentScreen: React.FC = () => {
           />
         )}
       />
-
       <Button title="Create" onPress={handleSubmit(onSubmit)} />
     </View>
   );

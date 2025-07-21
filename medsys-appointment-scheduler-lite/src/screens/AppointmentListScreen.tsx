@@ -14,8 +14,10 @@ import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../types/navigation";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AppointmentCard } from "../components/AppointmentCard";
+import { AppointmentSearchBar } from "../components/AppointmentSearchBar";
 import { EmptyListMessage } from "../components/EmptyListMessage";
 import { ViewToggleButton } from "../components/ViewToggleButton";
+import { format } from "date-fns";
 import { logout } from "../store/authSlice";
 
 type NavigationProp = NativeStackNavigationProp<
@@ -30,15 +32,21 @@ export const AppointmentListScreen: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Memoizamos el filtrado para optimizar rendimiento
+  // We memorize the filtering to optimize performance.
   const filteredAppointments = useMemo(() => {
     if (!searchTerm.trim()) return appointments;
 
     const lowerTerm = searchTerm.toLowerCase();
 
     return appointments.filter(({ date, doctor, notes }) => {
+      const dateText = format(
+        new Date(date),
+        "EEEE, MMMM d, yyyy"
+      ).toLowerCase();
+
       return (
-        date.toLowerCase().includes(lowerTerm) ||
+        date.toLowerCase().includes(lowerTerm) || // original date
+        dateText.includes(lowerTerm) || // descriptive date
         doctor.toLowerCase().includes(lowerTerm) ||
         (notes?.toLowerCase().includes(lowerTerm) ?? false)
       );
@@ -66,12 +74,7 @@ export const AppointmentListScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        placeholder="Search by date, doctor or note"
-        style={styles.searchInput}
-        value={searchTerm}
-        onChangeText={setSearchTerm}
-      />
+      <AppointmentSearchBar onSearchChange={setSearchTerm} />
       <View style={styles.toggleContainer}>
         <ViewToggleButton
           mode="list"
@@ -96,12 +99,17 @@ export const AppointmentListScreen: React.FC = () => {
           if ("id" in item) return item.id.toString();
           return index.toString(); // fallback if there's no id
         }}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <AppointmentCard
             date={item.date}
             doctor={item.doctor}
             notes={item.notes}
             viewMode={viewMode}
+            status={item.status}
+            index={index}
+            onViewDetail={() =>
+              navigation.navigate("AppointmentDetail", { appointment: item })
+            }
           />
         )}
         numColumns={viewMode === "grid" ? 3 : 1}
@@ -158,13 +166,5 @@ const styles = StyleSheet.create({
   },
   logoutText: {
     fontWeight: "bold",
-  },
-  searchInput: {
-    backgroundColor: "#ffffff",
-    borderWidth: 1,
-    borderColor: "#cccccc",
-    padding: 10,
-    marginBottom: 12,
-    borderRadius: 5,
   },
 });
