@@ -11,7 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useNavigation } from "@react-navigation/native";
-import { RootStackParamList } from "../types/navigation";
+import { RootStackParamList } from "../types";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AppointmentCard } from "../components/AppointmentCard";
 import { AppointmentSearchBar } from "../components/AppointmentSearchBar";

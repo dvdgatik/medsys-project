@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, Button, StyleSheet, SafeAreaView } from "react-native";
 import { CrossPlatformPicker } from "../components/CrossPlatformPicker";
-import { AppointmentStatus } from "../types/appointment";
+import { AppointmentStatus, RootStackParamList } from "../types";
 import { useDispatch } from "react-redux";
 import { updateAppointment } from "../store/appointmentsSlice";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import { RootStackParamList } from "../types/navigation";
 import { StatusTag } from "../components/StatusTag";
 
 type DetailScreenNavigationProp = NativeStackNavigationProp<

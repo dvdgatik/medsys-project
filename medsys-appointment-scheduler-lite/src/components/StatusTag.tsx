@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { AppointmentStatus } from "../types/appointment";
+import { AppointmentStatus } from "../types";
 
 interface StatusTagProps {
   status: AppointmentStatus;

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Appointment, AppointmentStatus } from '../types/appointment';
+import { Appointment, AppointmentStatus } from '../types';
 
 interface AppointmentState {
   appointments: Appointment[];

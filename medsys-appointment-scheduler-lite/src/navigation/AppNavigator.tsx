@@ -7,7 +7,7 @@ import { CreateAppointmentScreen } from "../screens/CreateAppointmentScreen";
 import { AppointmentDetailScreen } from "../screens/AppointmentDetailScreen";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import { RootStackParamList } from "../types/navigation";
+import { RootStackParamList } from "../types";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 export const AppNavigator: React.FC = () => {

@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { StatusTag } from "./StatusTag";
-import { AppointmentStatus } from "../types/appointment";
+import { AppointmentStatus } from "../types";
 import { format } from "date-fns";
 
 export type AppointmentCardProps = {
