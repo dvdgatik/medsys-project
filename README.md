@@ -46,13 +46,17 @@ This project is a lightweight Appointment Scheduler designed to demonstrate:
     └── 📁src
         └── 📁components
             ├── AppointmentCard.tsx
+            ├── AppointmentSearchBar.tsx
+            ├── CrossPlatformPicker.tsx
             ├── DateTimePickerInput.tsx
             ├── EmptyListMessage.tsx
             ├── SessionLoader.tsx
+            ├── StatusTag.tsx
             ├── ViewToggleButton.tsx
         └── 📁navigation
             ├── AppNavigator.tsx
         └── 📁screens
+            ├── AppointmentDetailScreen.tsx
             ├── AppointmentListScreen.tsx
             ├── CreateAppointmentScreen.tsx
             ├── LoginScreen.tsx
@@ -64,6 +68,7 @@ This project is a lightweight Appointment Scheduler designed to demonstrate:
             ├── appointment.ts
             ├── navigation.ts
             ├── user.ts
+            ├── index.ts
     ├── .gitignore
     ├── app.json
     ├── App.tsx
