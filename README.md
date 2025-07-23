@@ -82,6 +82,9 @@ This project is a lightweight Appointment Scheduler designed to demonstrate:
 
 ## Redux Flow Diagram
 
+<img width="3840" height="1705" alt="Untitled diagram _ Mermaid Chart-2025-07-23-172805" src="https://github.com/user-attachments/assets/fef7b418-7b3b-4fcc-8a56-9540e29f22aa" />
+
+
 ## 📦 Dependencies
 
 ### Core
