@@ -2,7 +2,7 @@ import React from "react";
 import { Platform, View, StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
-// Hacemos el componente genérico con <T extends string>
+// We create a generic component with <T extends string>
 type PickerOption<T> = {
   label: string;
   value: T;
@@ -23,7 +23,7 @@ export function CrossPlatformPicker<T extends string>({
     return (
       <select
         value={selectedValue}
-        onChange={(e) => onValueChange(e.target.value as T)} // casteo local para tipar el value
+        onChange={(e) => onValueChange(e.target.value as T)} // local casting to type the value
         style={{ padding: 10, fontSize: 16, width: "100%" }}
       >
         {options.map(({ label, value }) => (
@@ -38,7 +38,7 @@ export function CrossPlatformPicker<T extends string>({
   return (
     <Picker
       selectedValue={selectedValue}
-      onValueChange={(value) => onValueChange(value as T)} // casteo seguro porque viene del picker
+      onValueChange={(value) => onValueChange(value as T)} // secure casting because it comes from picker
       style={styles.picker}
       mode="dropdown"
     >
