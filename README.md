@@ -80,6 +80,8 @@ This project is a lightweight Appointment Scheduler designed to demonstrate:
 
 ---
 
+## Redux Flow Diagram
+
 ## 📦 Dependencies
 
 ### Core
