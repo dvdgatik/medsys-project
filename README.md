@@ -165,7 +165,9 @@ This project is a lightweight Appointment Scheduler designed to demonstrate:
 - [ ] Add real backend API for auth and appointments.
 - [ ] Add persistent storage (SQLite).
 - [x] Enhance UI/UX with animations and better design.
-- [ ] Add unit and integration tests with React Testing Library (RTL) and Jest (In Progress).
+- [ ] Add unit and integration tests with React Testing Library (RTL) and Jest **(In Progress)**.
 - [ ] Integrate monorepo and separate the web and mobile app
 - [ ] Add error boundaries and more robust error handling.
 - [x] Support for appointment editing.
+- [x] Add Appointment Detail View
+- [x] Update Appointment Status
