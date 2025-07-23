@@ -84,6 +84,7 @@ This project is a lightweight Appointment Scheduler designed to demonstrate:
 
 <img width="3840" height="1705" alt="Untitled diagram _ Mermaid Chart-2025-07-23-172805" src="https://github.com/user-attachments/assets/fef7b418-7b3b-4fcc-8a56-9540e29f22aa" />
 
+## TypeScript Contracts Diagram
 
 ## 📦 Dependencies
 
@@ -162,7 +163,7 @@ This project is a lightweight Appointment Scheduler designed to demonstrate:
 - Add real backend API for auth and appointments.
 - Add persistent storage (SQLite).
 - Enhance UI/UX with animations and better design.
-- Add unit and integration tests.
+- Add unit and integration tests with React Testing Library and Jest (In Progress).
 - Integrate monorepo and separate the web and mobile app
 - Add error boundaries and more robust error handling.
 - Support for appointment editing and deletion.
