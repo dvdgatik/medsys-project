@@ -86,6 +86,8 @@ This project is a lightweight Appointment Scheduler designed to demonstrate:
 
 ## TypeScript Contracts Diagram
 
+<img width="3062" height="3840" alt="Untitled diagram _ Mermaid Chart-2025-07-23-182048" src="https://github.com/user-attachments/assets/1c89daf6-e45d-4737-ab94-bec58c5d219b" />
+
 ## 📦 Dependencies
 
 ### Core
